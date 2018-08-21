@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  trip_id: MyString
+  service_id: 1
+  route_id: MyString
+  trip_headsign: 1
+  direction_id: 1
+
+two:
+  trip_id: MyString
+  service_id: 1
+  route_id: MyString
+  trip_headsign: 1
+  direction_id: 1

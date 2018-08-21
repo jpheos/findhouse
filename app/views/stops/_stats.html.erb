@@ -1,0 +1,15 @@
+<h1><%= name %></h1>
+
+<ul>
+    <% stats.each do |start_time, end_times| %>
+      <li>
+        <%= start_time %>
+        <ul>
+          <% end_times.each do |end_time, end_name| %>
+            <li><%= end_time %> : <%= end_name %></li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+
+</ul>
