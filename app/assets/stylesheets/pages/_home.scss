@@ -7,13 +7,17 @@
   .form-container {
     background-color: #ece5d1;
     padding: 20px;
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
   }
 
   @media (max-width: 900px)  {
     flex-direction: column;
 
     .map-container {
-      height: 80vh;
+      height: 75vh;
     }
     .form-container {
       flex-grow: 1;

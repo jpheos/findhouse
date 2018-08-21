@@ -6,19 +6,34 @@
 
 
         <%= form_tag("/", method: "get") do %>
-         <% PagesController::LYON_STOPS.each do |key, value| %>
-              <li>
-                <%= check_box_tag 'stop_ids[]', value %>
-                <%= key %>
-              </li>
-          <% end %>
-          <hr>
-          <%= time_select 'start', {minute_step: 15} %>
-          <br>
-          <%= time_select 'end', {minute_step: 15} %>
-          <%= submit_tag("C'est parti!") %>
-        <% end %>
+          <div class="form-group">
+            <ul class="form-row">
+             <% PagesController::LYON_STOPS.each do |key, value| %>
+                  <li class="col-6">
+                    <%= check_box_tag 'stop_ids[]', value, @stop_ids.include?(value) %>
+                    <%= key %>
+                  </li>
+              <% end %>
+            </ul>
+          </div>
 
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <%= time_field 'time', 'start', {minute_step: 15, value: @start_time, class: 'form-control'} %>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <%= time_field 'time', 'end', {minute_step: 15, value: @end_time, class: 'form-control'} %>
+              </div>
+            </div>
+          </div>
+
+
+
+          <%= submit_tag("C'est parti!", class: 'btn btn-primary btn-block') %>
+        <% end %>
       </div>
   </div>
 
