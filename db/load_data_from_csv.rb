@@ -1,22 +1,26 @@
 require 'csv'
 
-# # STOPS
-# filename = "#{File.dirname(__FILE__)}/data/stops.csv"
+# STOPS
+Stop.delete_all
+filename = "#{File.dirname(__FILE__)}/data/stops.csv"
+CSV.foreach(filename, :headers => true).with_index do |row, i|
+  Stop.create!(row.to_hash)
+  ap i
+end
 
+# STOPTIMES
+filename = "#{File.dirname(__FILE__)}/data/stop_times.csv"
+interisting_lyon_stations = Stop.near("Lyon", 80).select {|s| s.stop_id.split().first.split(":").last == "OCETrain"}.map(&:stop_id)
+interisting_nantes_stations = Stop.near("Nantes", 80).select {|s| s.stop_id.split().first.split(":").last == "OCETrain"}.map(&:stop_id)
+interisting_stations = interisting_lyon_stations + interisting_nantes_stations
 
-# CSV.foreach(filename, :headers => true).with_index do |row, i|
-#   Stop.create!(row.to_hash)
-#   ap i
-# end
+Stop.where.not(stop_id: interisting_stations).delete_all
 
-# # STOPTIMES
-# filename = "#{File.dirname(__FILE__)}/data/stop_times.csv"
-# interisting_stations = Stop.near("Lyon", 50).select {|s| s.stop_id.split().first.split(":").last == "OCETrain"}.map(&:stop_id)
-# StopTime.delete_all
-# CSV.foreach(filename, :headers => true).with_index do |row, i|
-#   StopTime.create!(row.to_hash) if interisting_Sstations.include? row["stop_id"]
-#   ap i if i % 500 == 0
-# end
+StopTime.delete_all
+CSV.foreach(filename, :headers => true).with_index do |row, i|
+  StopTime.create!(row.to_hash) if interisting_stations.include? row["stop_id"]
+  ap i if i % 500 == 0
+end
 
 # TRIPS
 filename = "#{File.dirname(__FILE__)}/data/trips.csv"
@@ -36,13 +40,14 @@ end
 filename = "#{File.dirname(__FILE__)}/data/calendar.csv"
 Calendar.delete_all
 CSV.foreach(filename, :headers => true).with_index do |row, i|
+  next unless %w(monday tuesday wednesday thursday friday).all? { |day| row[day] == '1' }
   Calendar.create!({
    :service_id =>  row['service_id'],
-        :monday => row['monday'] == '1',
-       :tuesday => row['tuesday'] == '1',
-     :wednesday => row['wednesday'] == '1',
-      :thursday => row['thursday'] == '1',
-        :friday => row['friday'] == '1',
+        :monday => true,
+       :tuesday => true,
+     :wednesday => true,
+      :thursday => true,
+        :friday => true,
       :saturday => row['saturday'] == '1',
         :sunday => row['sunday'] == '1'
   })

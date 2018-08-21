@@ -6,10 +6,9 @@
         <%= start_time %>
         <ul>
           <% end_times.each do |end_time, end_name| %>
-            <li><%= end_time %> : <%= end_name %></li>
+            <li><%= end_time %> : <%= end_name %> (<%= (Time.parse(end_time) - Time.parse(start_time)).to_i / 60 %> min)</li>
           <% end %>
         </ul>
       </li>
     <% end %>
-
 </ul>

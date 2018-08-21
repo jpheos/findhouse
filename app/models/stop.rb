@@ -28,11 +28,6 @@ class Stop < ApplicationRecord
       WHERE stops.stop_id = '#{self.stop_id}'
         AND (stop_times_main.departure_time::time BETWEEN time '#{start_time}:00' and  time '#{end_time}:00')
         AND stop_times_lyon.stop_id IN (#{target_stop_ids.map{|s| "'#{s}'"}.join(',')})
-        AND calendars.monday IS TRUE
-        AND calendars.tuesday IS TRUE
-        AND calendars.wednesday IS TRUE
-        AND calendars.thursday IS TRUE
-        AND calendars.friday IS TRUE
         AND stop_times_main.departure_time < stop_times_lyon.departure_time
       ORDER BY stop_times_main.departure_time, stop_times_lyon.arrival_time
     "

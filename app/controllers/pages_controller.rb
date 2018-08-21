@@ -17,12 +17,20 @@ class PagesController < ApplicationController
     "Vaise" => "StopPoint:OCETrain TER-87721001"
   }
 
+  NANTES_STOPS = {
+    "Nantes" => "StopPoint:OCETrain TER-87481002",
+    "Rezé-Pont-Rousseau" => "StopPoint:OCETrain TER-87481036"
+  }
+
+  CITY_STOPS = LYON_STOPS.merge(NANTES_STOPS)
+
   def home
 
 
-    distance_min = 5
+    distance_min = 4
 
-    stops = Stop.near("Lyon", 60)
+    stops = Stop.near("Lyon", 100)
+    stops += Stop.near("Nantes", 100)
     stops = stops.select {|s| s.distance > distance_min}
     @marker = []
 
@@ -50,15 +58,15 @@ class PagesController < ApplicationController
   private
 
   def start_time
-    @start_time ||= params[:time].try(:[], :start) || "07:30"
+    @start_time ||= (params[:time] && !params[:time][:start].blank?) ? params[:time][:start] : "07:30"
   end
 
   def end_time
-    @end_time ||= params[:time].try(:[], :end) || "08:30"
+    @end_time ||= (params[:time] && !params[:time][:end].blank?) ? params[:time][:end] : "08:30"
   end
 
   def stop_ids
-    @stop_ids ||= params[:stop_ids] || ["StopPoint:OCETrain TER-87722025", "StopPoint:OCETrain TER-87723197", "StopPoint:OCETrain TER-87282624", "StopPoint:OCETrain TER-87721001"]
+    @stop_ids ||= params[:stop_ids] || CITY_STOPS.values
   end
 
 end

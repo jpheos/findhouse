@@ -8,7 +8,7 @@
         <%= form_tag("/", method: "get") do %>
           <div class="form-group">
             <ul class="form-row">
-             <% PagesController::LYON_STOPS.each do |key, value| %>
+             <% PagesController::CITY_STOPS.each do |key, value| %>
                   <li class="col-6">
                     <%= check_box_tag 'stop_ids[]', value, @stop_ids.include?(value) %>
                     <%= key %>
@@ -20,12 +20,12 @@
           <div class="form-row">
             <div class="col">
               <div class="form-group">
-                <%= time_field 'time', 'start', {minute_step: 15, value: @start_time, class: 'form-control'} %>
+                <%= time_field 'time', 'start', {minute_step: 15, value: @start_time, class: 'form-control', required: true} %>
               </div>
             </div>
             <div class="col">
               <div class="form-group">
-                <%= time_field 'time', 'end', {minute_step: 15, value: @end_time, class: 'form-control'} %>
+                <%= time_field 'time', 'end', {minute_step: 15, value: @end_time, class: 'form-control', required: true} %>
               </div>
             </div>
           </div>
