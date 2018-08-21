@@ -42,8 +42,14 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
+    autoprefixer-rails (9.1.2)
+      execjs
     awesome_print (1.8.0)
     bindex (0.5.0)
+    bootstrap (4.1.3)
+      autoprefixer-rails (>= 6.0.3)
+      popper_js (>= 1.12.9, < 2)
+      sass (>= 3.5.2)
     builder (3.2.3)
     byebug (9.1.0)
     capybara (2.17.0)
@@ -71,6 +77,8 @@ GEM
     ffi (1.9.18)
     figaro (1.1.1)
       thor (~> 0.14)
+    font-awesome-sass (5.2.0)
+      sassc (>= 1.11)
     geocoder (1.4.5)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -98,6 +106,7 @@ GEM
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
     pg (0.21.0)
+    popper_js (1.14.3)
     public_suffix (3.0.1)
     puma (3.11.2)
     rack (2.0.3)
@@ -144,9 +153,15 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    sassc (1.12.1)
+      ffi (~> 1.9.6)
+      sass (>= 3.3.0)
     selenium-webdriver (3.8.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
+    simple_form (4.0.1)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -185,11 +200,13 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  bootstrap (~> 4.1.3)
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
   composite_primary_keys
   figaro
+  font-awesome-sass (~> 5.2.0)
   geocoder
   gmaps4rails
   jbuilder (~> 2.5)
@@ -200,6 +217,7 @@ DEPENDENCIES
   rails-assets-underscore!
   sass-rails (~> 5.0)
   selenium-webdriver
+  simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
@@ -208,4 +226,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.16.1
+   1.16.4

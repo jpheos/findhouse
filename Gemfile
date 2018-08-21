@@ -35,7 +35,9 @@ gem "gmaps4rails"
 gem 'awesome_print'
 gem 'figaro'
 gem 'composite_primary_keys'
-
+gem 'bootstrap', '~> 4.1.3'
+gem 'font-awesome-sass', '~> 5.2.0'
+gem 'simple_form'
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
