@@ -7,7 +7,6 @@ class PagesController < ApplicationController
    "3"    =>  "c4be25",
    "4"    =>  "91c425",
    "more" =>  "5ac425"
-
   }
 
   LYON_STOPS = {
@@ -24,20 +23,18 @@ class PagesController < ApplicationController
 
   CITY_STOPS = LYON_STOPS.merge(NANTES_STOPS)
 
+  DISTANCE_MIN = 4
+
   def home
 
+    stops = Stop.near("Lyon", 100, min_radius: DISTANCE_MIN)
+    stops += Stop.near("Nantes", 100, min_radius: DISTANCE_MIN)
 
-    distance_min = 4
-
-    stops = Stop.near("Lyon", 100)
-    stops += Stop.near("Nantes", 100)
-    stops = stops.select {|s| s.distance > distance_min}
-    @marker = []
-
+    all_stats = Stop.get_many_stats_schedule(stops.map(&:stop_id), stop_ids, start_time, end_time)
 
     @markers = Gmaps4rails.build_markers(stops) do |stop, marker|
 
-      stats = stop.get_stats_schedule(stop_ids, start_time, end_time)
+      stats = all_stats[stop.stop_id] || []
       nb_trains = stats.size
 
       color = nb_trains > 4 ? "more" : nb_trains.to_s
