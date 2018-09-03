@@ -12,7 +12,8 @@ end
 filename = "#{File.dirname(__FILE__)}/data/stop_times.csv"
 interisting_lyon_stations = Stop.near("Lyon", 80).select {|s| s.stop_id.split().first.split(":").last == "OCETrain"}.map(&:stop_id)
 interisting_nantes_stations = Stop.near("Nantes", 80).select {|s| s.stop_id.split().first.split(":").last == "OCETrain"}.map(&:stop_id)
-interisting_stations = interisting_lyon_stations + interisting_nantes_stations
+interisting_toulouse_stations = Stop.near("Toulouse", 80).select {|s| s.stop_id.split().first.split(":").last == "OCETrain"}.map(&:stop_id)
+interisting_stations = interisting_lyon_stations + interisting_nantes_stations + interisting_toulouse_stations
 
 Stop.where.not(stop_id: interisting_stations).delete_all
 
