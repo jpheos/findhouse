@@ -1,5 +1,3 @@
-ap "je vais configuer geocoder"
-ap ENV['GOOGLE_API_GEOCODING']
 Geocoder.configure(
   # Geocoding options
   # timeout: 3,                 # geocoding service timeout (secs)
@@ -11,7 +9,7 @@ Geocoder.configure(
   # https_proxy: nil,           # HTTPS proxy server (user:pass@host:port)
   # api_key: nil,               # API key for geocoding service
   # api_key: ENV['GOOGLE_API_GEOCODING'],               # API key for geocoding service
-  api_key: "AIzaSyDVLHg1vTXTUsg83jVgaZdcVvCh1iPKi24",               # API key for geocoding service
+  api_key: ENV['GOOGLE_API_BACK'],               # API key for geocoding service
 
   # cache: nil,                 # cache object (must respond to #[], #[]=, and #del)
   # cache_prefix: 'geocoder:',  # prefix (string) to use for all cache keys
