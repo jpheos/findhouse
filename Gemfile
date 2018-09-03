@@ -7,9 +7,9 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.2.1'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 0.18'
+gem 'pg', '~> 1.1.2'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -29,14 +29,16 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem "geocoder"
-gem "gmaps4rails"
+gem 'bootsnap', '~> 1.3.1'
+
+gem "geocoder", '~> 1.5.0'
+gem "gmaps4rails", '~> 2.1.2'
 gem 'awesome_print'
-gem 'figaro'
-gem 'composite_primary_keys'
+gem 'composite_primary_keys', '~> 11.0.3'
 gem 'bootstrap', '~> 4.1.3'
-gem 'font-awesome-sass', '~> 5.2.0'
-gem 'simple_form'
+gem 'font-awesome-sass', '~> 5.3.1'
+gem 'simple_form', '~> 4.0.1'
+
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
@@ -49,7 +51,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.13'
+  gem 'capybara', '~> 3.7.0'
   gem 'selenium-webdriver'
   gem 'dotenv-rails'
 end
