@@ -21,13 +21,13 @@ class PagesController < ApplicationController
     "Rezé-Pont-Rousseau" => "StopPoint:OCETrain TER-87481036"
   }
 
-  TOULOUSE_STOPS = {
-    "Matabiau" => "StopPoint:OCETrain TER-87611004",
-    "Arènes" => "StopPoint:OCETrain TER-87446179",
-    "Saint-Agne" => "StopPoint:OCETrain TER-87611301"
-  }
+  # TOULOUSE_STOPS = {
+  #   "Matabiau" => "StopPoint:OCETrain TER-87611004",
+  #   "Arènes" => "StopPoint:OCETrain TER-87446179",
+  #   "Saint-Agne" => "StopPoint:OCETrain TER-87611301"
+  # }
 
-  CITY_STOPS = LYON_STOPS.merge(NANTES_STOPS).merge(TOULOUSE_STOPS)
+  CITY_STOPS = LYON_STOPS.merge(NANTES_STOPS)#.merge(TOULOUSE_STOPS)
 
   DISTANCE_MIN = 4
 
@@ -36,7 +36,7 @@ class PagesController < ApplicationController
     stops = []
     stops += Stop.near("Lyon", 80, min_radius: DISTANCE_MIN)     unless (stop_ids & LYON_STOPS.values).blank?
     stops += Stop.near("Nantes", 80, min_radius: DISTANCE_MIN)   unless (stop_ids & NANTES_STOPS.values).blank?
-    stops += Stop.near("Toulouse", 80, min_radius: DISTANCE_MIN) unless (stop_ids & TOULOUSE_STOPS.values).blank?
+    # stops += Stop.near("Toulouse", 80, min_radius: DISTANCE_MIN) unless (stop_ids & TOULOUSE_STOPS.values).blank?
 
 
     all_stats = Stop.get_many_stats_schedule(stops.map(&:stop_id), stop_ids, start_time, end_time)

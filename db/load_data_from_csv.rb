@@ -13,7 +13,7 @@ filename = "#{File.dirname(__FILE__)}/data/stop_times.csv"
 interisting_lyon_stations = Stop.near("Lyon", 80).select {|s| s.stop_id.split().first.split(":").last == "OCETrain"}.map(&:stop_id)
 interisting_nantes_stations = Stop.near("Nantes", 80).select {|s| s.stop_id.split().first.split(":").last == "OCETrain"}.map(&:stop_id)
 interisting_toulouse_stations = Stop.near("Toulouse", 80).select {|s| s.stop_id.split().first.split(":").last == "OCETrain"}.map(&:stop_id)
-interisting_stations = interisting_lyon_stations + interisting_nantes_stations + interisting_toulouse_stations
+interisting_stations = interisting_lyon_stations + interisting_nantes_stations# + interisting_toulouse_stations
 
 Stop.where.not(stop_id: interisting_stations).delete_all
 
@@ -27,6 +27,7 @@ end
 filename = "#{File.dirname(__FILE__)}/data/trips.csv"
 Trip.delete_all
 CSV.foreach(filename, :headers => true).with_index do |row, i|
+  next unless StopTime.where(trip_id: row['trip_id']).exists?
   Trip.create!({
           :trip_id => row['trip_id'],
        :service_id => row['service_id'],
@@ -36,12 +37,12 @@ CSV.foreach(filename, :headers => true).with_index do |row, i|
   })
 end
 
-
 # CALENDAR
 filename = "#{File.dirname(__FILE__)}/data/calendar.csv"
 Calendar.delete_all
 CSV.foreach(filename, :headers => true).with_index do |row, i|
   next unless %w(monday tuesday wednesday thursday friday).all? { |day| row[day] == '1' }
+  next unless Trip.where(service_id: row['service_id']).exists?
   Calendar.create!({
    :service_id =>  row['service_id'],
         :monday => true,
@@ -53,3 +54,5 @@ CSV.foreach(filename, :headers => true).with_index do |row, i|
         :sunday => row['sunday'] == '1'
   })
 end
+
+
