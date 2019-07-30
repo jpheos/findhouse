@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180128212649) do
+ActiveRecord::Schema.define(version: 2019_07_30_130221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,8 +24,6 @@ ActiveRecord::Schema.define(version: 20180128212649) do
     t.boolean "friday"
     t.boolean "saturday"
     t.boolean "sunday"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "stations", force: :cascade do |t|
@@ -39,16 +37,14 @@ ActiveRecord::Schema.define(version: 20180128212649) do
 
   create_table "stop_times", id: false, force: :cascade do |t|
     t.string "trip_id"
-    t.datetime "arrival_time"
-    t.datetime "departure_time"
+    t.time "arrival_time"
+    t.time "departure_time"
     t.string "stop_id"
     t.integer "stop_sequence"
     t.string "stop_headsign"
     t.integer "pickup_type"
     t.integer "drop_off_type"
     t.string "shape_dist_traveled"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "stops", id: false, force: :cascade do |t|
@@ -61,8 +57,6 @@ ActiveRecord::Schema.define(version: 20180128212649) do
     t.string "stop_url"
     t.string "location_type"
     t.string "parent_station"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "trips", id: false, force: :cascade do |t|
@@ -71,8 +65,6 @@ ActiveRecord::Schema.define(version: 20180128212649) do
     t.string "route_id"
     t.integer "trip_headsign"
     t.integer "direction_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

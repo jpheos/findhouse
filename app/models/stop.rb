@@ -1,6 +1,6 @@
 class Stop < ApplicationRecord
   self.primary_key = :stop_id
-  default_scope { where(location_type: 0).where("stop_id LIKE 'StopPoint:OCETrain%'") }
+  # default_scope { where(location_type: 0).where("stop_id LIKE 'StopPoint:OCETrain%'") }
 
   geocoded_by :address, :latitude  => :stop_lat, :longitude => :stop_lon
 
