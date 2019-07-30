@@ -1,0 +1,17 @@
+<h1>select_stations!</h1>
+
+
+<%= form_tag(results_path, method: "get") do %>
+  <%= hidden_field_tag 'city', params[:city] %>
+  <% @stops.each do |stop| %>
+    <label for="">
+      <%= check_box_tag 'stop_ids[]', stop.stop_id, checked: true %>
+      <%= stop.stop_name %>
+    </label>
+    <br>
+  <% end %>
+  <br>
+  <%= submit_tag %>
+<% end %>
+
+

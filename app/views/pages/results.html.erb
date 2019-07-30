@@ -1,0 +1,49 @@
+  <div id="home">
+      <div class="map-container">
+       <div id="map" style="width: 100%; height: 100%"></div>
+      </div>
+      <div class="form-container">
+
+
+        <%= form_tag(results_path, method: "get") do %>
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <%= time_field 'time', 'start', {minute_step: 15, value: @start_time, class: 'form-control', required: true} %>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <%= time_field 'time', 'end', {minute_step: 15, value: @end_time, class: 'form-control', required: true} %>
+              </div>
+            </div>
+          </div>
+
+          <%= submit_tag("C'est parti!", class: 'btn btn-primary btn-block') %>
+        <% end %>
+      </div>
+  </div>
+
+</div>
+
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    var handler = Gmaps.build('Google');
+    handler.buildMap({ internal: { id: 'map' }, provider: { styles: style } }, function() {
+      markers = handler.addMarkers(<%= raw @markers.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      if (markers.length == 0) {
+        handler.getMap().setZoom(2);
+      } else if (markers.length == 1) {
+        handler.getMap().setZoom(14);
+      }
+    });
+  <% end %>
+<% end %>
+
+<hr>
+
+
