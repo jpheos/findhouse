@@ -54,8 +54,8 @@ class PagesController < ApplicationController
       marker.lng stop.stop_lon
       marker.picture({
         "url" => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=#{URI::encode(nb_trains.to_s)}|#{COLORS[color]}|#{backcolor}",
-        "width" => 60,
-        "height" => 60
+        "width" => 21,
+        "height" => 34
       })
       marker.infowindow render_to_string(partial: "/stops/stats", locals: { name: stop.stop_name, stats: stats })
     end
