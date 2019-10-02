@@ -1,6 +1,8 @@
   <div id="home">
       <div class="map-container">
-       <div id="map" style="width: 100%; height: 100%"></div>
+       <!-- <div id="map" style="width: 100%; height: 100%"></div> -->
+       <div id='map' style='width: 400px; height: 300px;'></div>
+
       </div>
       <div class="form-container">
 
@@ -25,24 +27,6 @@
   </div>
 
 </div>
-
-
-
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    var handler = Gmaps.build('Google');
-    handler.buildMap({ internal: { id: 'map' }, provider: { styles: style } }, function() {
-      markers = handler.addMarkers(<%= raw @markers.to_json %>);
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
-      if (markers.length == 0) {
-        handler.getMap().setZoom(2);
-      } else if (markers.length == 1) {
-        handler.getMap().setZoom(14);
-      }
-    });
-  <% end %>
-<% end %>
 
 <hr>
 
