@@ -9,6 +9,10 @@ class PagesController < ApplicationController
    "more" =>  "5ac425"
   }
 
+  def city
+    ap "je sui sla"
+  end
+
   def results
 
 

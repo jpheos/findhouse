@@ -1,0 +1,42 @@
+<div class="main-container">
+  <div id="map" style="width: 100%; height: 100vh" data-city="<%= @city %>" data-api-key="<%= ENV['MAPBOX_API_FRONT'] %>"></div>
+
+  <div class="sidebar">
+    <%= link_to root_path  do %>
+      <nav>
+        <i class="fas fa-train"></i>
+      </nav>
+    <% end %>
+
+    <hr>
+
+      <h1><%= @city %></h1>
+
+    <hr>
+    <form id="form" action="">
+      <% @stops.each do |stop| %>
+
+        <label >
+          <input name="stop_ids[]" type="checkbox" value="<%= stop.stop_id %>" checked> <%= stop.stop_name.gsub(/Gare de /, "") %>
+        </label>
+
+        <br>
+
+
+      <% end %>
+
+      <hr>
+
+      <div class="hours">
+        <input name="start_time"  type="time" step="1800" value="<%= @start_time %>">
+        <input name="end_time"    type="time" step="1800" value="<%= @end_time %>">
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+
+

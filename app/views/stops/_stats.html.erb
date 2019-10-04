@@ -1,9 +1,9 @@
-<h1><%= name %></h1>
+<h3><%= name.gsub(/Gare de /, "") %></h3>
 
 <ul>
     <% stats.each do |start_time, end_times| %>
       <li>
-        <%= start_time %>
+        <strong><%= start_time %></strong>
         <ul>
           <% end_times.each do |end_time, end_name| %>
             <li><%= end_time %> : <%= end_name %> (<%= (Time.parse(end_time) - Time.parse(start_time)).to_i / 60 %> min)</li>

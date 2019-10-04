@@ -1,0 +1,49 @@
+.main-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 350px;
+  background: #353434;
+  color: white;
+  padding: 25px;
+
+  nav {
+    text-align: center;
+    i {
+      color: white;
+      font-size: 30px;
+    }
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  label {
+    cursor: pointer;
+    width: 100%;
+  }
+
+  input[type="checkbox"] {
+    margin-right: 8px;
+  }
+
+  hr {
+    border-top: 1px solid #616161;
+  }
+
+  .hours {
+    display: flex;
+    justify-content: space-between;
+
+    input {
+      background: transparent;
+      color: white;
+      border: none;
+    }
+  }
+
+}
+

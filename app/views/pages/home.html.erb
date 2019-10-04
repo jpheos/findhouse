@@ -1,6 +1,14 @@
-<h1>home!</h1>
 
 
-<%= form_tag(select_stations_path, method: "get") do %>
+<%= link_to "Lyon", city_path("lyon") %>
+
+<%= link_to "Nantes", city_path("nantes") %>
+
+<%= link_to "Toulouse", city_path("toulouse") %>
+
+  <br>
+autre?
+<%= form_tag(search_cities_path, method: "get") do %>
   <%= text_field_tag :city %>
 <% end %>
+

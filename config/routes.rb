@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-
   get :results, to: 'pages#results'
+  resources :cities, only: :show do
+    collection do
+      get :search
+    end
+    member do
+      get :data
+    end
+  end
   get :select_stations, to: 'pages#select_stations'
   root to: 'pages#home'
 
