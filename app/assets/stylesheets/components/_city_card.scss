@@ -1,0 +1,55 @@
+.city-card {
+  background: red;
+  display: block;
+  height: 200px;
+  width: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  font-size: 30px;
+  color: white;
+  text-decoration: none;
+  transition: 1s ease;
+  font-weight: bold;
+  border-radius: 2px;
+
+  &:hover {
+    color: white;
+    text-decoration: none;
+    opacity: 1;
+  }
+}
+
+.city-card--toulouse {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), image-url('toulouse.jpg');
+
+  &:hover {
+    background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), image-url('toulouse.jpg');
+    color: white;
+    text-decoration: none;
+  }
+}
+
+
+.city-card--nantes {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), image-url('nantes.jpg');
+
+  &:hover {
+    background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), image-url('nantes.jpg');
+    color: white;
+    text-decoration: none;
+  }
+}
+
+
+.city-card--lyon {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), image-url('lyon.jpg');
+
+  &:hover {
+    background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), image-url('lyon.jpg');
+    color: white;
+    text-decoration: none;
+  }
+}
+

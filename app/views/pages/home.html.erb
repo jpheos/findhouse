@@ -1,14 +1,31 @@
+<div class="home">
+
+  <p>Cherchez les gares les mieux connectées à une métropole</p>
+
+  <div class="cities-card">
+    <%= link_to city_path("nantes"), class: 'city-card city-card--nantes'  do %>
+      Nantes
+    <% end %>
 
 
-<%= link_to "Lyon", city_path("lyon") %>
+    <%= link_to city_path("lyon"), class: 'city-card city-card--lyon'  do %>
+      Lyon
+    <% end %>
 
-<%= link_to "Nantes", city_path("nantes") %>
 
-<%= link_to "Toulouse", city_path("toulouse") %>
+    <%= link_to city_path("toulouse"), class: 'city-card city-card--toulouse'  do %>
+      Toulouse
+    <% end %>
+  </div>
 
+
+
+  autre ville?
   <br>
-autre?
-<%= form_tag(search_cities_path, method: "get") do %>
-  <%= text_field_tag :city %>
-<% end %>
+  <br>
+  <%= form_tag(search_cities_path, method: "get") do %>
+    <%= text_field_tag :city %>
+  <% end %>
+</div>
+
 

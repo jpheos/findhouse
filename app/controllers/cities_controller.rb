@@ -3,6 +3,8 @@ class CitiesController < ApplicationController
   before_action :end_time
   before_action :range
 
+  DEFAULT_RANGE = 90
+
   COLORS = {
    "0"    =>  "000000",
    "1"    =>  "c42525",
@@ -51,7 +53,7 @@ class CitiesController < ApplicationController
   end
 
   def range
-    @range ||= (params[:range] || 70).to_i
+    @range ||= (params[:range] || DEFAULT_RANGE).to_i
   end
 
   def start_time

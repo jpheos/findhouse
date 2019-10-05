@@ -1,38 +1,18 @@
 // Specific CSS for your home-page
 
-#home {
+.home {
   min-height: 100vh;
-  display: flex;
+  color: white;
 
-  .form-container {
-    background-color: #ece5d1;
-    padding: 20px;
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-  }
-
-  @media (max-width: 900px)  {
-    flex-direction: column;
-
-    .map-container {
-      height: 70vh;
-    }
-    .form-container {
-      flex-grow: 1;
-    }
-  }
-
-  @media (min-width: 901px)  {
-
-    .map-container {
-      flex-grow: 1;
-    }
-    .form-container {
-      width: 300px
-    }
-  }
+  background: #353434;
+  padding-top: 200px;
+  text-align: center;
 }
 
+
+.home .cities-card {
+  display: flex;
+  justify-content: space-around;
+  margin: 40px 0;
+}
 

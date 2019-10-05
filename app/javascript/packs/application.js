@@ -2,9 +2,10 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import mapboxgl from 'mapbox-gl'
 
 
-const mapElement = document.querySelector('#map')
-const form       = document.querySelector('#form')
-const markers    = []
+const mapElement    = document.querySelector('#map')
+const form          = document.querySelector('#form')
+const markers       = []
+let   alreadyFitMap = false
 let   map
 
 
@@ -12,6 +13,7 @@ const fitMapToMarkers = (stops) => {
   const bounds = new mapboxgl.LngLatBounds()
   stops.forEach(stop => bounds.extend([ stop.stop_lon, stop.stop_lat ]))
   map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
+  alreadyFitMap = true
 }
 
 const removeAllMarkers = () => {
@@ -42,7 +44,8 @@ const addMarkerToMap = (stop) => {
 const updateMarkers = (stops) => {
   removeAllMarkers()
   stops.forEach(addMarkerToMap)
-  fitMapToMarkers(stops)
+  if (!alreadyFitMap)
+    fitMapToMarkers(stops)
 }
 
 const synchroServer = () => {
