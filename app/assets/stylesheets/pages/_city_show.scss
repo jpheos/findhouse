@@ -7,18 +7,23 @@
   width: 350px;
   background: #353434;
   color: white;
-  padding: 25px;
+  padding: 5px 20px;
+  display: flex;
+  flex-direction: column;
 
-  nav {
-    text-align: center;
-    i {
-      color: white;
-      font-size: 30px;
-    }
+  a {
+    text-decoration: none;
+  }
+
+  h3 {
+    color: white;
+    display: flex;
+    justify-content: space-between;
   }
 
   h1 {
     text-align: center;
+    margin-top: 10px;
   }
 
   label {
@@ -32,6 +37,11 @@
 
   hr {
     border-top: 1px solid #616161;
+    width: 100%;
+  }
+
+  form {
+    flex-grow: 1;
   }
 
   .hours {

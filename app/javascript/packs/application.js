@@ -1,6 +1,8 @@
 import 'mapbox-gl/dist/mapbox-gl.css'
 import mapboxgl from 'mapbox-gl'
+import initPlaces from '../init_places'
 
+initPlaces()
 
 const mapElement    = document.querySelector('#map')
 const form          = document.querySelector('#form')

@@ -1,6 +1,12 @@
 <div class="home">
 
+  <h1>TerMap</h1>
+
   <p>Cherchez les gares les mieux connectées à une métropole</p>
+
+  <%= form_tag(search_cities_path, method: "get") do %>
+    <%= text_field_tag :city, "", placeholder: "Rentrez une ville" %>
+  <% end %>
 
   <div class="cities-card">
     <%= link_to city_path("nantes"), class: 'city-card city-card--nantes'  do %>
@@ -18,14 +24,6 @@
     <% end %>
   </div>
 
-
-
-  autre ville?
-  <br>
-  <br>
-  <%= form_tag(search_cities_path, method: "get") do %>
-    <%= text_field_tag :city %>
-  <% end %>
 </div>
 
 

@@ -1,18 +1,30 @@
 // Specific CSS for your home-page
 
+
+
 .home {
   min-height: 100vh;
   color: white;
 
   background: #353434;
-  padding-top: 200px;
+  padding-top: 40px;
   text-align: center;
-}
 
+  h1 {
+    font-size: 75px;
+    margin: 60px 0;
+  }
+}
 
 .home .cities-card {
   display: flex;
   justify-content: space-around;
   margin: 40px 0;
+}
+
+.home form {
+  width: 50%;
+  margin: auto;
+  color: #353434;
 }
 
