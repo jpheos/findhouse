@@ -6,7 +6,14 @@
   min-height: 100vh;
   color: white;
 
-  background: #353434;
+  /*background: #353434;*/
+  /*background-image: asset-url('background.jpg');*/
+  background: linear-gradient(#353434aa, #353434aa 25%, #353434 70%), asset-url('background.jpg');
+  background-position-y: 0vh, -30vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+
   padding-top: 40px;
   text-align: center;
 
