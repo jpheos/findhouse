@@ -1,7 +1,17 @@
+@keyframes appear {
+  from {
+    width: 300px;
+    height: 150px;
+  }
+  to   {
+    width: 350px;
+    height: 170px;
+  }
+}
+
 .city-card {
-  background: red;
   display: block;
-  height: 200px;
+  height: 170px;
   width: 350px;
   display: flex;
   justify-content: center;
@@ -11,8 +21,10 @@
   color: white;
   text-decoration: none;
   transition: 1s ease;
+  animation: 1s ease-out appear ;
   font-weight: bold;
   border-radius: 2px;
+  background-position: center;
 
   &:hover {
     color: white;

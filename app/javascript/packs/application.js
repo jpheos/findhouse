@@ -32,8 +32,14 @@ const addMarkerToMap = (stop) => {
   element.className = 'marker';
   element.style.backgroundImage = `url('${stop.icon_url}')`;
   element.style.backgroundSize = 'contain';
-  element.style.width = '18px';
-  element.style.height = '29px';
+  console.log(stop.trips_count)
+  if (stop.trips_count == 0) {
+    element.style.width = '9px';
+    element.style.height = '15px';
+  } else {
+    element.style.width = '18px';
+    element.style.height = '29px';
+  }
 
   const marker = new mapboxgl.Marker(element)
   .setLngLat([stop.stop_lon, stop.stop_lat])
@@ -73,7 +79,7 @@ const initMap = () => {
 
   map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/jpheos/ck1aplwrx09a21cl84k1n5ooe'
+    style: 'mapbox://styles/jpheos/ck1apy8z419lp1cqhxe1giia8'
   })
 
 

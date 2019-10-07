@@ -6,7 +6,7 @@ class CitiesController < ApplicationController
   DEFAULT_RANGE = 90
 
   COLORS = {
-   "0"    =>  "000000",
+   "0"    =>  "FFFFFF",
    "1"    =>  "c42525",
    "2"    =>  "c47725",
    "3"    =>  "c4be25",
@@ -30,7 +30,7 @@ class CitiesController < ApplicationController
       stats = all_stats[stop.stop_id] || []
       nb_trains = stats.size
       color = nb_trains > 4 ? "more" : nb_trains.to_s
-      backcolor = nb_trains.zero? ? "FFFFFF" : "000000"
+      backcolor = nb_trains.zero? ? "000000" : "FFFFFF"
 
       stop.attributes.merge(
         trips_count: stats.size,
